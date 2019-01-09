@@ -72,7 +72,7 @@ $(function() {
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // Test suite for loading new content after initial load
     describe('New Feed Selection', function() {
 
         const container = document.querySelector('.feed');
