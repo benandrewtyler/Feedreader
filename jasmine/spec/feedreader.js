@@ -9,10 +9,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+    
+    // Test suite for RSS feed variable
     describe('RSS Feeds', function() {
         // Test if all feed variable is defined and not empty
         it('are defined', function() {
@@ -39,7 +37,7 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    // Test suite for the apps menu functionality
     describe('The menu', function() {
 
         // Test that the default state of the menu is hidden on page load
@@ -57,10 +55,11 @@ $(function() {
             expect(body.classList.contains('menu-hidden')).toBe(false);
             menu.click();
             expect(body.classList.contains('menu-hidden')).toBe(true);
-            
-        });
+        });    
+    });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    // Test suite for initial load of feed
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -68,12 +67,11 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    });
 }());
