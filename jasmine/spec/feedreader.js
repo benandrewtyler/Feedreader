@@ -32,26 +32,33 @@ $(function() {
         // Test if feed's name property is defined and not empty
         it('has name', function() {
             for(let feed of allFeeds) {
-                expect(feed.name).toBeDefined();
-                expect(feed.name).not.toBe(0);
+                expect(feed.name).not.toBe(undefined);
+                expect(feed.name).not.toBe('');
             }
         });
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
+    describe('The menu', function() {
 
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+        // Test that the default state of the menu is hidden on page load
+        it('is hidden', function() {
+            const body = document.querySelector('body');
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+        });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        // Test that menu toggles from multiple clicks
+        it('toggles on/off', function() {
+            const menu = document.querySelector('.menu-icon-link');
+            const body = document.querySelector('body');
+            
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(false);
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+            
+        });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
@@ -68,4 +75,5 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 }());
