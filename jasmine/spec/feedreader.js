@@ -14,23 +14,14 @@ $(function() {
     * feeds definitions, the allFeeds variable in our application.
     */
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
-         */
+        // Test if all feed variable is defined and not empty
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
 
-        /* Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        // Test if feed's url is defined and not empty
         it('url defined', function() {
             for(let feed of allFeeds) {
                 expect(feed.url).toBeDefined();
@@ -38,10 +29,7 @@ $(function() {
             }
         });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+        // Test if feed's name property is defined and not empty
         it('has name', function() {
             for(let feed of allFeeds) {
                 expect(feed.name).toBeDefined();
