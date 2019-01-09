@@ -9,7 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    
+
     // Test suite for RSS feed variable
     describe('RSS Feeds', function() {
         // Test if all feed variable is defined and not empty
@@ -50,7 +50,6 @@ $(function() {
         it('toggles on/off', function() {
             const menu = document.querySelector('.menu-icon-link');
             const body = document.querySelector('body');
-            
             menu.click();
             expect(body.classList.contains('menu-hidden')).toBe(false);
             menu.click();
@@ -61,13 +60,18 @@ $(function() {
     // Test suite for initial load of feed
     describe('Initial Entries', function() {
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        // Load the feed and wait until complete
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        });
+
+        // Test if completed work contains any content
+        it('loads feed', function() {
+            const container = document.querySelector('.feed');
+            expect(container.children.length > 0).toBe(true);
+        });
     });
+    
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
