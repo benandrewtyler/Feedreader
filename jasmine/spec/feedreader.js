@@ -73,32 +73,21 @@ $(function() {
     });
 
     // Test suite for loading new content after initial load
-    describe('New Feed Selection', function() {
+    describe('New Feed Selection', function(){
+        var testfeed;
 
-        const container = document.querySelector('.feed');
-        const firstFeed = [];
+        // when a new feed is loaded by the loadFeed function that the content actually changes
 
-        // Load multiple feeds and compare content to ensure change
         beforeEach(function(done) {
-
-            // Load first feed
-            loadFeed(0);
-            
-            // Store values of first feed
-            Array.from(container.children).forEach(content => {
-                firstFeed.push(content.innerText);
-            });
-
-            // Load second feed
-            loadFeed(1, done);
-        });
-        
-        // Compare first feed against new feed content
-        it('content changes', function() {
-            Array.from(container.children).forEach( (content, index) => {
-                expect(content.innerText !== firstFeed[index]).toBe(true);
+            loadFeed(0, function() {
+                testfeed = $('.feed').html();
+                loadFeed(1, done);
             });
         });
-    
+
+        // Check the newsfeed  html to be not same as previous.
+        it('has been loaded', function(){
+            expect($('.feed').html()).not.toEqual(testfeed);
+        });
     });
 }());
