@@ -67,8 +67,7 @@ $(function() {
 
         // Test if completed work contains any content
         it('loads feed', function() {
-            const container = document.querySelector('.feed');
-            expect(container.children.length > 0).toBe(true);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
